@@ -23,4 +23,6 @@ echo "🚀 Running bootstrap.sh in fake environment..."
 env HOME="$FAKEHOME" "$FAKEDOTFILES/bootstrap.sh"
 
 echo "✅ Test bootstrap complete."
-echo "📁 Inspect fakehome: $FAKEHOME"
+echo "🔍 Inspect test environment at: $FAKEHOME"
+echo "🧼 When you're done, run the following to clean up:"
+echo "    rm -rf \"$FAKEHOME\""
