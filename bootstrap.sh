@@ -48,5 +48,24 @@ for file in "$DOTFILES_DIR"/.*; do
   fi
 done
 
-echo "✅ All dotfiles linked."
+echo "📁 Symlinking XDG config files..."
+CONFIG_SOURCE_DIR="$DOTFILES_DIR/config"
+CONFIG_TARGET_DIR="$HOME/.config"
+
+mkdir -p "$CONFIG_TARGET_DIR"
+
+for src in "$CONFIG_SOURCE_DIR"/*; do
+  name=$(basename "$src")
+  dest="$CONFIG_TARGET_DIR/$name"
+
+  if [ -e "$dest" ] && [ ! -L "$dest" ]; then
+    backup="${dest}.backup.$(date +%s)"
+    mv "$dest" "$backup"
+    echo "  🔁 Backed up existing $name to $(basename "$backup")"
+  fi
+
+  echo "  🔗 Linking $name → $dest"
+  ln -sfn "$src" "$dest"
+done
+
 echo "🎉 Bootstrap complete! Restart your terminal."
