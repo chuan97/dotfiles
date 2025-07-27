@@ -120,3 +120,4 @@ source /opt/homebrew/share/powerlevel10k/powerlevel10k.zsh-theme
 # vi motions
 bindkey -v
 export KEYTIMEOUT=1
+
